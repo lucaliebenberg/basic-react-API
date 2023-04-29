@@ -5,6 +5,7 @@ const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // API = // https://fakestoreapi.com/products
   const fetchData = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
@@ -38,7 +39,17 @@ const App = () => {
   // rendered data content
   const RenderedContent = () => {
     return (
-      <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          marginLeft: "auto",
+          marginRight: "auto",
+          gap: "24px",
+        }}
+      >
         {data.map((item) => {
           return (
             <div
@@ -47,21 +58,28 @@ const App = () => {
                 display: "flex",
                 flexDirection: "column",
                 color: "black",
+                width: "300px",
+                height: "auto",
+                gap: "16px",
+                border: "1px solid grey",
+                padding: "10px",
+                borderRadius: "8px",
+                boxShadow: "2px 2px 2px 1px rgba(0, 0, 0, 0.2)",
               }}
             >
-              <h4>{item.title}</h4>
+              <h5>{item.title}</h5>
               <p>{item.category}</p>
               <img
                 src={item.image}
                 alt={item.description}
-                width={"200px"}
-                height={"150px"}
+                width={"150px"}
+                height={"200px"}
               />
-              <p>{item.price}</p>
+              <p>R {item.price}</p>
             </div>
           );
         })}
-      </>
+      </div>
     );
   };
 
@@ -70,12 +88,43 @@ const App = () => {
     <>
       {loading ? (
         <>
-          <h1 style={{ color: "red" }}>Loading...</h1>
+          <h1
+            style={{
+              color: "red",
+              margin: 0,
+              padding: 0,
+              textAlign: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Loading...
+          </h1>
         </>
       ) : (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <RenderedContent />
-        </div>
+        <>
+          <div
+            style={{
+              height: "10vh",
+              width: "100%",
+              backgroundColor: "white",
+              boxShadow: "0 2px 2px -2px rgba(0,0,0,.2)",
+            }}
+          >
+            <h1 style={{ margin: 0, paddingTop: "8px", paddingLeft: "38px" }}>
+              StoreRUs
+            </h1>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "16px",
+            }}
+          >
+            <RenderedContent />
+          </div>
+        </>
       )}
     </>
   );
