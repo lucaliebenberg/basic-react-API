@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./index.css";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -76,6 +75,18 @@ const App = () => {
                 height={"200px"}
               />
               <p>R {item.price}</p>
+              <button
+                style={{
+                  width: "200px",
+                  height: "50px",
+                  padding: "8px",
+                  borderRadius: "8px",
+                  backgroundColor: "orange",
+                  color: "white",
+                }}
+              >
+                Buy Now
+              </button>
             </div>
           );
         })}
@@ -87,20 +98,42 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <>
-          <h1
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            height: "100vh",
+          }}
+        >
+          <div
+            className="lds-spinner"
             style={{
-              color: "red",
-              margin: 0,
-              padding: 0,
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "auto",
+              marginBottom: "auto",
             }}
           >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h1 style={{ color: "red", marginTop: "auto", marginBottom: "auto" }}>
             Loading...
           </h1>
-        </>
+        </div>
       ) : (
         <>
           <div
@@ -131,3 +164,11 @@ const App = () => {
 };
 
 export default App;
+
+// Redux - State Management
+
+// Store (project state)
+// User purchases
+// User added to carts
+// Total Value of Cart
+// Increment / Decrement
